@@ -1,0 +1,33 @@
+.headline--primary {
+  font: $font-stack-primary;
+  color: $color-primary;
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.headline--secondary {
+  font: $font-stack-primary;
+  font-weight: 100;
+  font-size: 20px;
+  color: $color-text-primary;
+}
+
+.link {
+  color: $color-secondary;
+  font-weight: bold;
+  &:visited {
+    color: $color-secondary;
+  }
+}
+
+.blockquote {
+  font: $font-stack-primary;
+  color: $color-text-primary;
+  font-size: 1.6em;
+  font-weight: 200;
+  border-left: 10px solid;
+  border-left-color: $color-primary;
+  border-radius: 5px;
+  padding-left: 15px;
+}

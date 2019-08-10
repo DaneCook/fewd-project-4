@@ -1,0 +1,148 @@
+// **********************************************
+// _grid.scss
+// styles related to the grid system and
+// main container.
+// major grid styles have been added here for you
+// but additional styling may be needed
+// **********************************************
+
+// grid base class
+.grid {
+
+  // .grid__row
+  &__row {
+    padding: 1em 0px;
+    display: flex;
+    flex-direction: column;
+
+    // NOTE: replace with media query mixin if aiming for exceeds
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  // .grid__col
+  &__col {
+
+    // create grid columns dynamically
+    // loop through each column size
+    @for $i from 1 through 12 {
+
+      // concatenate CSS selector, ie when $i = 1,
+      // selector would be .grid__col--1
+      &--#{$i} {
+
+        // base styles applied to all grid columns
+        // NOTE: could be converted to a placeholder, along with margin
+        // from the  media query
+        margin-top: 10px;
+        flex-basis: 100%;
+
+        // NOTE: replace with media query mixin if aiming for exceeds
+        @media (min-width: 768px) {
+
+          // base stlyes applied to all grid columns
+          margin-top: 0;
+
+          // make column width a percentage of the column number / total columns
+          flex-basis: #{$i / 12 * 100 + "%"} ;
+        }
+      }
+    }
+  }
+}
+
+// targets all elements with classes that begin with grid__col
+[class^=grid__col] {
+  // grid__col + grid__col, targets two sibling columns
+  & + & {
+
+    // NOTE: replace with media query mixin if aiming for exceeds
+    @media (min-width: 768px) {
+
+      // add grid gutter
+      margin-left: 10px;
+    }
+  }
+}
+
+.container {
+  width: 85%;
+  margin: 15px auto;
+}
+
+.grid__col--12 {
+  @include breakpoint {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.grid__col--12.theme__colors {
+  @include grids;
+  background-color: #8EF0D3;
+  @include breakpoint {
+    @include desktop-grids;
+  }
+}
+
+.grid__col--6.theme__colors {
+  @include grids;
+  background-color: #34A2D1;
+  @include breakpoint {
+    flex-basis: 49%;
+    @include desktop-grids;
+  }
+}
+
+.grid__col--4.theme__colors {
+  @include grids;
+  background-color: #6BF4F4;
+  @include breakpoint {
+    flex-basis: 32.5%;
+    @include desktop-grids;
+  }
+}
+
+.grid__col--3.theme__colors {
+  @include grids;
+  background-color: #E3ACF4;
+  @include breakpoint {
+    flex-basis: 24%;
+    @include desktop-grids;
+  }
+}
+
+.grid__col--5.theme__colors {
+  @include grids;
+  background-color: #84CB8B;
+  @include breakpoint {
+    flex-basis: 39.5%;
+    @include desktop-grids;
+  }
+}
+
+.grid__col--7.theme__colors {
+  @include grids;
+  background-color: #D78B8B;
+  @include breakpoint {
+    flex-basis: 59.5%;
+    @include desktop-grids;
+  }
+  &.centered {
+    @include breakpoint {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.grid__col--8.theme__colors {
+  @include grids;
+  background-color: #E29E6A;
+  @include breakpoint {
+    flex-basis: 66.5%;
+    @include desktop-grids;
+  }
+}
